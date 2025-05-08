@@ -1,0 +1,27 @@
+{
+  "user": {
+    "username": "JeanEco",
+    "totalReports": 12,
+    "totalWeight": 24,
+    "wasteTypes": ["plastic", "organic", "glass"],
+    "consecutiveDays": 3,
+    "photosUploaded": 6,
+    "visitedPoints": ["Point A", "Point B", "Point C"],
+    "invitedFriends": 2,
+    "badges": ["Plastic Sorting", "Explorer", "Reporter"]
+  },
+  "history": [
+    {
+      "date": "2025-04-01",
+      "wasteType": "plastic",
+      "place": "Point A",
+      "weight": 5
+    },
+    {
+      "date": "2025-04-02",
+      "wasteType": "glass",
+      "place": "Point B",
+      "weight": 8
+    }
+  ]
+}
