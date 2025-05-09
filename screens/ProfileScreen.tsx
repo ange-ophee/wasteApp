@@ -3,38 +3,30 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-na
 
 const ProfileScreen = ({ navigation }: any) => {
   const handleLogout = () => {
-    Alert.alert(
-      'Confirm Logout',
-      'Are you sure you want to log out?',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Logout',
-          style: 'destructive',
-          onPress: () => {
-            // Add your actual logout logic here (clear auth tokens, etc.)
-            navigation.replace('Login'); // Replace with your actual login screen name
-          },
+    Alert.alert('Confirm Logout', 'Are you sure you want to log out?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Logout',
+        style: 'destructive',
+        onPress: () => {
+          navigation.replace('Login');
         },
-      ]
-    );
+      },
+    ]);
   };
 
   return (
     <View style={styles.container}>
-      {/* Avatar */}
       <Image
         source={{
-          uri: 'https://www.freesvg.org/img/Female-Avatar.png', // Placeholder avatar
+          uri: 'https://www.freesvg.org/img/Female-Avatar.png',
         }}
         style={styles.avatar}
       />
 
-      {/* User Information */}
       <Text style={styles.name}>Manuella Assako</Text>
       <Text style={styles.email}>manuassako@gmail.com</Text>
 
-      {/* Rank and Badges */}
       <View style={styles.section}>
         <Text style={styles.label}>Rank:</Text>
         <Text style={styles.value}>Eco Warrior 🌿</Text>
@@ -42,10 +34,9 @@ const ProfileScreen = ({ navigation }: any) => {
 
       <View style={styles.section}>
         <Text style={styles.label}>Badges:</Text>
-        <Text style={styles.value}>♻️ Recycler | 🧹 Clean-Up Hero | 🛠️ Reporter</Text>
+        <Text style={styles.value}>♻ Recycler | 🧹 Clean-Up Hero | 🛠 Reporter</Text>
       </View>
 
-      {/* Buttons */}
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Edit Profile</Text>
       </TouchableOpacity>
@@ -62,7 +53,7 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e6f0fa', // Light blue background
+    backgroundColor: '#e6f0fa',
     alignItems: 'center',
     paddingTop: 50,
     paddingHorizontal: 20,
@@ -110,7 +101,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logoutButton: {
-    backgroundColor: '#c0392b', // Red tone for logout (optional, or keep same blue)
+    backgroundColor: '#c0392b',
   },
   buttonText: {
     color: 'white',

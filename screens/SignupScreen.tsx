@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
 
 const SignupScreen = ({ navigation }: any) => {
-  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSignup = () => {
-    if (!username || !email || !password) {
+    if (!email || !password || !confirmPassword) {
       Alert.alert('Error', 'Please fill in all fields');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      Alert.alert('Error', 'Passwords do not match');
       return;
     }
 
@@ -17,27 +22,20 @@ const SignupScreen = ({ navigation }: any) => {
       return;
     }
 
-    Alert.alert('Success', `Signed up as ${email}`);
-    navigation.navigate('Home');
+    Alert.alert('Success', `Account created for ${email}`);
+    navigation.replace('Home'); // Redirect to HomeScreen after signup
   };
 
   return (
     <View style={styles.container}>
       <Image
-          source={{
-            uri: 'https://www.clipartmax.com/png/middle/108-1084407_light-blue-universal-recycling-symbol-logo-sign-recycling-symbols.png',
-          }}
-          style={styles.logo}
-        />
-      <Text style={styles.title}>Sign Up</Text>
-
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        placeholderTextColor="#6495ed"
-        value={username}
-        onChangeText={setUsername}
+        source={{
+          uri: 'https://www.clipartmax.com/png/middle/108-1084407_light-blue-universal-recycling-symbol-logo-sign-recycling-symbols.png',
+        }}
+        style={styles.logo}
       />
+
+      <Text style={styles.title}>Sign Up</Text>
 
       <TextInput
         style={styles.input}
@@ -58,17 +56,34 @@ const SignupScreen = ({ navigation }: any) => {
         onChangeText={setPassword}
       />
 
+      <TextInput
+        style={styles.input}
+        placeholder="Confirm Password"
+        placeholderTextColor="#6495ed"
+        secureTextEntry
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
+      />
+
       <TouchableOpacity style={styles.button} onPress={handleSignup}>
         <Text style={styles.buttonText}>Sign Up</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.switchText}>
+          Already have an account? <Text style={styles.switchLink}>Login</Text>
+        </Text>
       </TouchableOpacity>
     </View>
   );
 };
 
+export default SignupScreen;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e6f0fa',
+    backgroundColor: '#e0f7fa',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -98,7 +113,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Book Antiqua',
   },
   button: {
-    backgroundColor: '#034592',
+    backgroundColor: '#00796b',
     paddingVertical: 15,
     borderRadius: 8,
     alignItems: 'center',
@@ -111,6 +126,13 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontFamily: 'Book Antiqua',
   },
+  switchText: {
+    marginTop: 15,
+    color: '#034592',
+    fontFamily: 'Book Antiqua',
+  },
+  switchLink: {
+    textDecorationLine: 'underline',
+    fontWeight: 'bold',
+  },
 });
-
-export default SignupScreen;

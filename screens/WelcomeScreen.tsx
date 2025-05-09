@@ -1,3 +1,5 @@
+// Welcome screen
+
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
@@ -34,7 +36,7 @@ const WelcomeScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e6f0fa',
+    backgroundColor: '#e0f7fa',  // Light blue background with a hint of green
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontFamily: 'Book Antiqua',
-    color: '#034592',
+    color: '#00796b',  // Dark Green
     textAlign: 'center',
     marginBottom: 30,
   },
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
     gap: 15,
   },
   button: {
-    backgroundColor: '#034592',
+    backgroundColor: '#00796b',  // Dark Green
     paddingVertical: 15,
     borderRadius: 8,
     alignItems: 'center',

@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Image,
-  Alert,
-} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
 
 const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState('');
@@ -25,7 +17,7 @@ const LoginScreen = ({ navigation }: any) => {
     }
 
     Alert.alert('Success', `Logged in as ${email}`);
-    navigation.navigate('Home');
+    navigation.replace('Home'); // Redirect to HomeScreen after login
   };
 
   return (
@@ -61,14 +53,22 @@ const LoginScreen = ({ navigation }: any) => {
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+        <Text style={styles.switchText}>
+          Don’t have an account? <Text style={styles.switchLink}>Sign Up</Text>
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
+export default LoginScreen;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e6f0fa',
+    backgroundColor: '#e0f7fa',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Book Antiqua',
   },
   button: {
-    backgroundColor: '#034592',
+    backgroundColor: '#00796b',
     paddingVertical: 15,
     borderRadius: 8,
     alignItems: 'center',
@@ -111,6 +111,13 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontFamily: 'Book Antiqua',
   },
+  switchText: {
+    marginTop: 15,
+    color: '#034592',
+    fontFamily: 'Book Antiqua',
+  },
+  switchLink: {
+    textDecorationLine: 'underline',
+    fontWeight: 'bold',
+  },
 });
-
-export default LoginScreen;
